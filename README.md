@@ -15,6 +15,8 @@ Ein kleines Projekt für das STM32 Nucleo-F303RE Board. Der Synthesizer erzeugt 
 ---
 
 ## Pinbelegung / Verkabelung
+<img width="689" height="583" alt="image" src="https://github.com/user-attachments/assets/86f67e4c-f18c-45c8-949e-e9ac7b23ceba" />
+<img width="1214" height="994" alt="image" src="https://github.com/user-attachments/assets/472bb0d7-e102-4b2d-b6c2-87f6200eb14b" />
 
 ### 1. Lautsprecher (an TIM2)
 | Lautsprecher Pin | STM32 Pin | Beschreibung |
