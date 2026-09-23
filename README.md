@@ -8,9 +8,8 @@ Ein kleines Projekt für das STM32 Nucleo-F303RE Board. Der Synthesizer erzeugt 
 
 * **Mikrocontroller**: STM32 Nucleo-F303RE (ARM Cortex-M4)
 * **Tastenfeld**: 4x4 Matrix-Keypad (16 Tasten: 1–9, 0, A–D, *, #)
-* **Lautsprecher**: Passiver Kleinlautsprecher oder Piezo-Buzzer
-* **Vorwiderstand**: 100 Ω Vorwiderstand für den Lautsprecher
-* **Verdrahtung**: Steckbrücken (Jumper Wires)
+* **Lautsprecher**: Passiver Kleinlautsprecher
+* **Vorwiderstand**: 220 Ω Vorwiderstand für den Lautsprecher
 
 ---
 
