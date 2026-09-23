@@ -1,6 +1,6 @@
 # STM32 Audio-Synthesizer
 
-Ein Projekt für das STM32 Nucleo-F303RE Board. Der Synthesizer erzeugt über Hardware-PWM auf einem Timer-Kanal (TIM2 CH1) monofone Töne mit voller 3,3V Lautstärke. Gesteuert wird das System über ein 4x4 Matrix-Tastenfeld: Die oberen drei Zeilen umfassen die 12 chromatischen Halbtöne einer Oktave, während die untere Zeile zur Oktavierung und zum Umschalten verschiedener Signalformen (Rechteck und Pulsweiten) dient.
+Ein kleines Projekt für das STM32 Nucleo-F303RE Board. Der Synthesizer erzeugt über PWM auf einem Timer-Kanal (TIM2 CH1) Töne. Gesteuert wird das System über ein 4x4 Matrix-Tastenfeld: Die oberen drei Zeilen umfassen die 12 Halbtöne einer Oktave, während die untere Zeile zur Oktavierung und zum Umschalten verschiedener Signalformen (Rechteck und Pulsweiten) dient.
 
 ---
 
@@ -52,9 +52,9 @@ Ein Projekt für das STM32 Nucleo-F303RE Board. Der Synthesizer erzeugt über Ha
 +-----+-----+-----+-----+
 ```
 
-### 2. Noten & Tonleiter (12 chromatische Halbtöne)
+### 2. Noten
 
-Die oberen 3 Zeilen bilden eine vollständige chromatische Tonleiter von 12 Halbtönen:
+Die oberen 3 Zeilen bilden eine Tonleiter von 12 Halbtönen:
 
 | Zeile | Taste | Note | Basis-Frequenz (4. Oktave) |
 | :---: | :---: | :--- | :---: |
@@ -76,12 +76,12 @@ Die oberen 3 Zeilen bilden eine vollständige chromatische Tonleiter von 12 Halb
 * **`0` (Oktave hoch)**: Erhöht die Tonhöhe um jeweils eine Oktave (bis zu +2 Oktaven).
 * Wird während des Haltens einer Taste die Oktave gewechselt, passt sich die Tonhöhe sofort an.
 
-### 4. Signalformen & Klangfarben
-Über die Tasten **`#`** (zurück) und **`D`** (vor) wird zwischen vier verschiedenen Signalformen umgeschaltet. Das Tastverhältnis (Duty Cycle) der Hardware-PWM steuert dabei das Obertonspektrum bei gleichbleibend maximaler Lautstärke:
-1. **Rechteck 50%**: Voll, warm und kräftig (klassischer 8-Bit Chiptune / Synth-Sound).
+### 4. Signalformen
+Über die Tasten **`#`** (zurück) und **`D`** (vor) wird zwischen vier verschiedenen Signalformen umgeschaltet. Das Duty Cycle der PWM steuert dabei das Obertonspektrum:
+1. **Rechteck 50%**: 8-Bit Chiptune / Synth-Sound.
 2. **Puls 25%**: Sägezahn-Charakter mit ausgeprägten Obertönen.
-3. **Puls 12,5%**: Scharf, nasal und schneidend.
-4. **Puls 6,25%**: Sehr hell und metallisch (Nadelimpulse).
+3. **Puls 12,5%**: Schärferer Ton.
+4. **Puls 6,25%**: Noch schärferer Ton.
 
 ---
 
@@ -99,10 +99,3 @@ Die oberen 3 Zeilen bilden eine vollständige chromatische Tonleiter von 12 Halb
 1. Das Projekt in der STM32CubeIDE über `File -> Open Projects from File System...` importieren.
 2. Das Board per USB-Kabel verbinden.
 3. Auf **Run** oder **Debug** klicken – die IDE kompiliert das Projekt und überträgt das Programm automatisch auf den Mikrocontroller.
-
----
-
-## Besonderheiten / Hinweise
-
-* **Volle Lautstärke**: Da die Frequenz direkt über das Periodenregister (ARR) moduliert wird, schwingt der Lautsprecher mit vollen 3,3 V Rail-to-Rail-Rechteckimpulsen direkt auf der Notenfrequenz. Dadurch wird am passiven Lautsprecher maximale Lautstärke ohne zusätzlichen Audioverstärker erreicht.
-* **Pin PA5 / Onboard-LED (LD2)**: Pin PA5 teilt sich die Leitung mit der grünen Nutzer-LED auf dem Nucleo-Board. Beim Drücken einer Taste in Spalte 2 ('2', '5', '8', '0') leuchtet die LED kurz als optische Rückmeldung auf.
